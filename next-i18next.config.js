@@ -14,5 +14,4 @@ module.exports = {
 	ns: ['site-frontend'],
 	defaultNS: 'site-frontend',
 	serializeConfig: false,
-	debug: true,
 };

@@ -6,8 +6,7 @@ import { getStaticPropsLocize } from '@/helpers/locize';
 import styles from '@/styles/Home.module.scss';
 
 export default function Home() {
-	const { t, ready } = useTranslation();
-	if (!ready) return 'loading translations...';
+	const { t } = useTranslation();
 	return (
 		<>
 			<Head>

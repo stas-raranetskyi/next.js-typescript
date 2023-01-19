@@ -1,0 +1,27 @@
+name: Build and Lint
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '.github/**'
+
+jobs:
+  build_test:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@main
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@main
+        with:
+          node-version: 18.x
+      - name: npm install, build, lint
+        run: |
+          npm install -g yarn
+          yarn install
+          npm run build --if-present
+          npm run eslint
+          npm run stylelint
+        env:
+          NEXT_PUBLIC_LOCIZE_PROJECT_ID: ${{secrets.NEXT_PUBLIC_LOCIZE_PROJECT_ID}}
+          NEXT_PUBLIC_LOCIZE_VERSION: dev
